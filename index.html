@@ -1,142 +1,331 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-  <meta charset="UTF-8">
-  <title>தத்துவாரியர் பாடல்கள்</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Noto Sans Tamil', Latha, Arial, sans-serif;
-      background: #f8f9fa;
-      padding: 20px;
-    }
-    .poem {
-      white-space: pre-wrap;
-      background: #fff;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    mark {
-      background: yellow;
-      padding: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>தத்துவ ஞான மார்க்கம் - Saint Thathuvarayar | சுரூபானந்த சோதி</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;700&family=Tiro+Tamil:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-saffron: #964B00; /* Deep Ochre/Saffron - காவி */
+            --color-gold: #FFD700;    /* Royal Gold */
+            --color-dark: #333333;     /* Dark Text */
+            --color-light-bg: #FCF8F3; /* Off-White/Parchment */
+            --font-heading: 'Tiro Tamil', serif;
+            --font-body: 'Noto Sans Tamil', sans-serif;
+        }
+
+        /* 1. Global & Typography */
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-light-bg);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-saffron);
+            text-align: center;
+            margin-top: 0;
+        }
+
+        a {
+            color: var(--color-saffron);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: var(--color-gold);
+        }
+
+        /* Override Bootstrap Nav Link Color for Saffron/White Theme */
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 700;
+            font-size: 1.1em;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid var(--color-gold);
+            color: var(--color-gold) !important;
+        }
+        
+        /* 2. Hero Section (Home) */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(252, 248, 243, 0.8), rgba(252, 248, 243, 0.8)), url('placeholder-image.jpg') center/cover no-repeat;
+            /* **ACTION: Replace 'placeholder-image.jpg' with a serene image of the Saint/Temple** */
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-attachment: fixed; /* Optional: for a parallax effect */
+        }
+
+        .hero h1 {
+            color: var(--color-saffron);
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: var(--color-dark);
+            font-style: italic;
+        }
+
+        /* 3. Main Content Area */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px dashed #DDD;
+        }
+
+        .content-card {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        /* 4. Song/Poem Layout (தத்துவப் பாடல்கள்) */
+        .song-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .song-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 5px solid var(--color-saffron);
+            background-color: #FFF;
+        }
+
+        .song-item h3 {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .song-text {
+            white-space: pre-wrap;
+            font-size: 1.1em;
+        }
+        
+        /* 5. Footer */
+        .footer {
+            background-color: var(--color-saffron);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+        
+        .footer a {
+            color: var(--color-gold);
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="mb-4">தத்துவாரியர் பாடல்கள்</h1>
 
-    <!-- Search Box -->
-    <input type="text" id="searchBox" class="form-control mb-4" placeholder="தேடவும் (Title, Subtitle, அல்லது பாடல்)..." />
-
-    <div class="accordion" id="titleAccordion"></div>
-  </div>
-
-  <script>
-    const API_URL = "https://www.vallalar.co.in/api/thathuvaryar/";
-    let fullData = [];  // Store full API response
-    let currentQuery = "";
-
-    // Highlight function
-    function highlightText(text, query) {
-      if (!query) return text;
-      const regex = new RegExp(`(${query})`, "gi");
-      return text.replace(regex, "<mark>$1</mark>");
-    }
-
-    // Render accordion UI
-    function renderAccordion(data) {
-      const titleAccordion = document.getElementById("titleAccordion");
-      titleAccordion.innerHTML = ""; // clear old
-
-      data.forEach((titleObj, tIndex) => {
-        const titleItem = document.createElement("div");
-        titleItem.className = "accordion-item";
-
-        titleItem.innerHTML = `
-          <h2 class="accordion-header" id="heading${tIndex}">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#collapse${tIndex}" aria-expanded="false" aria-controls="collapse${tIndex}">
-              ${highlightText(titleObj.title, currentQuery)}
-            </button>
-          </h2>
-          <div id="collapse${tIndex}" class="accordion-collapse collapse" aria-labelledby="heading${tIndex}" 
-            data-bs-parent="#titleAccordion">
-            <div class="accordion-body" id="subtitleContainer${tIndex}"></div>
-          </div>
-        `;
-        titleAccordion.appendChild(titleItem);
-
-        const subtitleContainer = titleItem.querySelector(`#subtitleContainer${tIndex}`);
-        const subtitleAccordion = document.createElement("div");
-        subtitleAccordion.className = "accordion";
-        subtitleAccordion.id = `subtitleAccordion${tIndex}`;
-        subtitleContainer.appendChild(subtitleAccordion);
-
-        titleObj.subtitles.forEach((sub, sIndex) => {
-          const subItem = document.createElement("div");
-          subItem.className = "accordion-item";
-          subItem.innerHTML = `
-            <h2 class="accordion-header" id="subHeading${tIndex}-${sIndex}">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#subCollapse${tIndex}-${sIndex}" aria-expanded="false" aria-controls="subCollapse${tIndex}-${sIndex}">
-                ${highlightText(sub.subtitle, currentQuery)}
-              </button>
-            </h2>
-            <div id="subCollapse${tIndex}-${sIndex}" class="accordion-collapse collapse" aria-labelledby="subHeading${tIndex}-${sIndex}" 
-              data-bs-parent="#subtitleAccordion${tIndex}">
-              <div class="accordion-body">
-                ${sub.poems.map(p => `<div class="poem mb-2">${highlightText(p.poem.replace(/\r\n/g, "<br/>"), currentQuery)}</div>`).join("")}
-              </div>
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top" style="background-color: var(--color-saffron); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+            <div class="container-fluid container">
+                <a class="navbar-brand text-white" href="#home" style="font-family: var(--font-heading); font-size: 1.5em;"> சுரூபானந்த சோதி</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: white;">
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'white\' stroke-width=\'2\' linecap=\'round\' linejoin=\'round\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#home">முகப்பு</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#history">தத்துவராயர் வரலாறு</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#songs">தத்துவப் பாடல்கள்</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#preaching">உபதேசங்கள்</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#temple">சமாதித் திருக்கோயில்</a></li>
+                    </ul>
+                </div>
             </div>
-          `;
-          subtitleAccordion.appendChild(subItem);
-        });
-      });
-    }
+        </nav>
+    </header>
 
-    // Fetch data
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(data => {
-        fullData = data;
-        renderAccordion(fullData);
-      })
-      .catch(err => {
-        console.error("Error fetching data:", err);
-        document.getElementById("titleAccordion").innerHTML = `<div class="alert alert-danger">⚠️ தரவுகளை ஏற்றுவதில் பிழை!</div>`;
-      });
+    <main>
+        <section id="home" class="hero">
+            <h1 class="display-2">தத்துவ ஞான மார்க்கம்</h1>
+            <p class="lead">"சாதல் பிறத்தல் என்னும் இரு வினையில் இருந்து விடுதலை"</p>
+            <p class="tamil-name h4">குரு துரிய மகான் தத்துவராயர்</p>
+        </section>
 
-    // Search filter
-    document.getElementById("searchBox").addEventListener("input", function () {
-      currentQuery = this.value.toLowerCase();
+        <div class="container">
 
-      if (!currentQuery) {
-        renderAccordion(fullData); // reset
-        return;
-      }
+            <section id="history" class="section">
+                <h2 class="mb-4">📜 மகான் தத்துவராயர் வரலாறு (Saint's History)</h2>
+                <div class="content-card">
+                    <p>இரண்டு வகையான வரலாறுகள் மகான் தத்துவராயர் பற்றி உள்ளது.</p>
+                    <p class="fw-bold">முதல் வரலாறு:</p>
+                    <p>1841ஆம்  ஆண்டு கொன்றைமா நகரம் அருணாச்சல முதலியார் பதிப்பித்த புத்தகத்தில் வெளிவந்தது.இதில் தத்துவராயரின் மாமா சொரூபானந்தர் என்றும் சொரூபானந்தரின் குரு சிவப்பிரகாசர் என்றும் இருக்கும். </p>
+                    <p>தனக்கு ஞான ஆசிரியரை தேடி தத்துவராயர் வடக்கு நோக்கி சென்றார் என்றும் சொரூபானந்தர் தெற்கு நோக்கி பயணித்து சிவபிரகாசரை தனக்கு குருவாக ஏற்றுக்  கொண்டார் என்றும், வடக்கே சென்று தமக்கு குரு கிடைக்காமல் திரும்பி வந்த தத்துவராயர் தனது மாமாவான சொரூபானந்தரையே குருவாக ஏற்றுக் கொண்டார் என்று இருக்கும். இந்த வரலாறு உண்மை இல்லை. இதை சான்றுகளுடன் கீழே  பார்ப்போம்.</p>
+                     <p class="fw-bold">இரண்டாம் வரலாறு:</p>
+                     <p>1953ஆம் ஆண்டு கோவிலூர் மடம் பதிப்பித்த புத்தகத்தில் உள்ளது.இது  சமய மார்க்கத்தில் வரும் குரு பரம்பரையை அடிப்படையாகக் கொண்டது.அந்த வரலாறு பின்வருமாறு. </p>
+                     <p>கைலாயத்தில் எழுந்தருளிய உமாமகேசர் முதலாசாரியர் பின்னர் நந்திகேசர், சனற்குமாரர், வியாசர், சூதரிஷி, கடவுள்நாதர், தருவூர்ச்சித்தர், அருள்முனிவர், கீழூர்முனிவர், பரமுனிவர், திருப்பனந்தாளர், மதுரைப் புஞ்சை முனிவர், வடமுனிவர், திருநடராசர், சிவப்பிரகாசர், சொரூபானந்தர், தத்துவராயர். என்ற குரு பரம்பரை வரலாற்றில் தத்துவராயரை நுழைத்துள்ளார்கள். இந்த வரலாறும் உண்மை அல்ல. </p>
+                     <p>மகான் தத்துவராயர் எல்லாம் வல்ல சோதி வடிவான இறைவனை <b>சுரூபானந்தர்</b> என்றும் <b>சிவபிரகாசர்</b> என்றும் <b>தத்துவன்</b> என்றும் <b>பரிபூரணர்</b> என்றும் இன்னும் பலவகை திருபெயர்களால் குறிப்பிடுகிறார்.</p>
+                     <p>தத்துவராயர் வரலாறு என்று அச்சிடப்பட்ட நூல்களில் இருப்பது போல் தத்துவராயரின் மாமா சொரூபானந்தராக இருந்தால்,
+                    கை கால்கள் உடைய  தனது மாமாவை எதற்கு தத்துவராயர் சோதி உருவே என்றும் சுடரே என்றும் குறிப்பிட வேண்டும். </p>
 
-      const filtered = fullData.map(titleObj => {
-        const matchedSubtitles = titleObj.subtitles.map(sub => {
-          const matchedPoems = sub.poems.filter(p => p.poem.toLowerCase().includes(currentQuery));
-          if (sub.subtitle.toLowerCase().includes(currentQuery) || matchedPoems.length > 0) {
-            return { ...sub, poems: matchedPoems.length ? matchedPoems : sub.poems };
-          }
-          return null;
-        }).filter(Boolean);
+                <p>சொரூபானந்தரின் குரு, கை கால்கள் கொண்ட சிவப்பிரகாசராக இருந்தால் தத்துவராயர் எதற்கு சிவப்பிரகாசரை சோதி என்று குறிப்பிட வேண்டும்.</p>     
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="song-item">
+                            <h3>🎶 சான்று பாடல்கள் </h3>
+                            <pre class="song-text">
+<b>சோதி யுருவே சுரூபானந்தச் சுடரே</b>
 
-        if (titleObj.title.toLowerCase().includes(currentQuery) || matchedSubtitles.length > 0) {
-          return { ...titleObj, subtitles: matchedSubtitles };
-        }
-        return null;
-      }).filter(Boolean);
+அத்த னேயறி வானந்த நாடனே 
+சுத்தனே <b>சுரூபானந்தச் சோதியே</b>
 
-      renderAccordion(filtered);
-    });
-  </script>
+சுருதிக டொடர் <b>சுரூபானந்தச் சுடரே</b>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+அரிபிரமன் முதலாய வமரரெலா மலமாக்கத்,
+தெரிவரிய செய்ய <b>சிவப்பிரகாச </b>னெழுந்தருளிப், 
+பொருவதிலா நாயேனைப் பொருளாக்கி யுட்புகுந்து,
+யரிவதுசெய் தாண்டவற்குப் பல்லாண்டு கூறுதுமே, 
+<b>சோதிக்குப்</b> பல்லாண்டு கூறுதுமே
+
+அயனொடு மாயவ னுலகுக ளவர்க்கே 
+யருளுதன் மாறுத னினதரு ளெனவே
+நயனுடை மொழிசெவிப் புலத்துமுன் னறிந்த 
+நானவ ராயனு பவித்தது மன்றிப்
+பயனுடை யுருத்திரன் மகேசனு மாக்கிப் 
+பழித்தபின் சதாசிவ மளித்ததும் பழித்தாய் 
+சயமுறு மதிற்பரம் பொருளெனக் கருள்வாய்
+<b>தத்துவனே</b> பள்ளி யெழுந்தரு ளாயே
+
+காலமு ஞாதுருஞ் ஞானமு ஞேயமுங் 
+கண்டன னென்னி லிராசத மாயை 
+மேலொடு கீழ்பக்கம் விரவிய பின்முன் 
+விரிவுறு மவைபல மாயின வெல்லாஞ் 
+சாலவு மிரணிய கர்ப்பமு மிதுதான் 
+சதாசிவ கால பரன்கன விது வெப் 
+பாலுயர் காரண வுபாதியென் றருளப் 
+<b>பரிபூர்ணனே</b> பள்ளி யெழுந்தரு ளாயே
+                            </pre>
+                        </div>
+                    </div>
+
+                </div> 
+
+                <p>மகான் தத்துவாராயரால் ஏற்படுத்தப்பட்ட தனித்த மார்க்கமான <b>தத்துவ ஞான மார்க்கத்தில்</b> குழப்பத்தை ஏற்படுத்தவே தெரிந்தோ தெரியாமலோ இந்த 
+                    வரலாறுகள் சேர்க்கப்பட்டுள்ளது. இந்தப் பொய் வரலாறுகளை நாம் இனி நம்ப வேண்டிய அவசியம் இல்லை.</p>
+
+                <p> மகான் தத்துவராயர் ஏற்படுத்திய தத்துவ ஞான மார்க்கத்தின் மூலம், மாத்திரை ⌛ஒன்றில் அருளும் சுரூபானந்த சோதியை வழிபட்டு குரு துரிய நிலைய அடைந்து சாதல் ⚰️ பிறத்தல் 👩🏽‍🍼 என்னும் இரு வினையில் 
+                    இருந்து விடுதலை அடைவோம் வாருங்கள் !</p>
+                
+                </div>
+            </section>
+
+            <section id="songs" class="section">
+                <h2 class="mb-4">🎶 தத்துவப் பாடல்கள் (Philosophical Songs)</h2>
+                <p class="content-card text-center">தத்துவாராயர் அருளிய பாடல்கள், ஆன்ம விசாரணையைத் தூண்டும் தத்துவக் கருத்துக்களைக் கொண்டவை. அவற்றின் ஒரு பகுதி இங்கே:</p>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="song-item">
+                            <h3>பாடல் 1: நிலையாமை</h3>
+                            <pre class="song-text">
+காடுஞ் சிவையுங் கண்டவர் யாவர்?
+நாடும் பொருள்கள் நசிந்தவை யாகும்.
+தேடும் உலகினில் தேவன் உளனே,
+ஆடும் ஒளியாய் அவனிடம் சேர்வீர்!
+                            </pre>
+                            <p class="small text-muted">**சுருக்கம்:** உலகப் பொருட்கள் நிலையற்றவை. அழியும் தன்மை கொண்டவை. நிலையான இறைவனை நாடுவதே உண்மையான வாழ்க்கை.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="song-item">
+                            <h3>பாடல் 2: உடலின் இரகசியம்</h3>
+                            <pre class="song-text">
+உள்ளே உறைந்தவன் உன்னிலும் அவனே,
+கள்ளமில் மனமே காணும் வழியே.
+எள்ளுக்குள் எண்ணை போல் எங்கும் நிறைந்தவன்,
+தள்ளாமல் தேடி தியானம் செய்வீரே.
+                            </pre>
+                            <p class="small text-muted">**சுருக்கம்:** இறைவன் நம் மனதிற்குள்ளேயே இருக்கிறான். கபடம் இல்லாத மனதினால் மட்டுமே அவனை உணர முடியும். தியானமே அதற்கு வழி.</p>
+                        </div>
+                    </div>
+                </div> 
+                </section>
+
+            <section id="preaching" class="section">
+                <h2 class="mb-4">🗣️ உரைகள் & உபதேசங்கள் (Teachings)</h2>
+                <div class="content-card">
+                    <h3 class="text-center">தத்துவப் பிரகாசரின் மையக் கருத்து</h3>
+                    <p>சுவாமிகளின் போதனைகளின் சாரம், **"நீ யார் என்பதை உணர்"** என்பதாகும். நம் உடலும் மனமும் நிரந்தரமானவை அல்ல, ஆனால் உள்ளே இருக்கும் ஆத்மா அழிவில்லாதது. இதை உணர்வதே தத்துவஞானம்.</p>
+                    <p class="fw-bold">முக்கிய உபதேசங்கள்:</p>
+                    <ul>
+                        <li><span class="fw-bold">ஆசைகளைக் குறை:</span> பற்றின்மை என்பது நிம்மதிக்கான முதல் படி.</li>
+                        <li><span class="fw-bold">சமத்துவம்:</span> அனைத்து உயிர்களிடமும் அன்பைப் பேணுதல்.</li>
+                        <li><span class="fw-bold">தியானம்:</span> தன்னை உணரும் முயற்சியில் மனதைக் கட்டுப்படுத்துதல்.</li>
+                    </ul>
+                    <div class="text-center mt-4 p-3 border rounded">
+                        <img src="https://via.placeholder.com/300x150?text=Audio/Video+Lecture+Placeholder" alt="Lecture placeholder" class="img-fluid rounded">
+                        <p class="small text-muted mt-2">*ஞானியர் உரைகளின் ஒலி/ஒளிப்பதிவுகள் விரைவில் சேர்க்கப்படும்.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="temple" class="section">
+                <h2 class="mb-4">🙏 சமாதித் திருக்கோயில் (Samadhi Temple)</h2>
+                <div class="content-card">
+                    <p>ஞானசித்தர் தத்துவாராயர் அவர்களின் ஜீவ சமாதி அமைந்துள்ள இடம் எறும்பூர் (Erambur) அருகே இருப்பதாகப் பொதுவான நம்பிக்கை உள்ளது. இது பக்தர்களின் புனித யாத்திரை மையமாகத் திகழ்கிறது.</p>
+                    
+                    <h5 class="fw-bold text-center mt-4">கோயில் விவரங்கள்:</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered mt-3 text-center">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col" style="background-color: #F0EAD6;">அமைவிடம்</th>
+                                    <th scope="col" style="background-color: #F0EAD6;">தரிசன நேரம்</th>
+                                    <th scope="col" style="background-color: #F0EAD6;">முக்கிய திருவிழா</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>எறும்பூர், கடலூர் மாவட்டம் (உத்தேசமாக)</td>
+                                    <td>காலை 6:00 - நண்பகல் 12:00, மாலை 4:00 - இரவு 8:00</td>
+                                    <td>குருபூஜை (ஆண்டுதோறும்)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="text-center mt-4 p-3 border rounded">
+                        <img src="https://via.placeholder.com/400x200?text=Map+Placeholder" alt="Map placeholder" class="img-fluid rounded">
+                        <p class="small text-muted mt-2">*சமாதி அமைந்துள்ள இடத்தை கூகிள் மேப் மூலம் இங்கே இணைக்கலாம்.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div> 
+    </main>
+
+    <footer class="footer">
+        <p class="mb-1">&copy; 2025 தத்துவ ஒளி | Saint Thathuvarayar | அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
+        <p class="mb-0">தொடர்புக்கு: <a href="mailto:info@thathuvaoli.org">info@thathuvaoli.org</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-
