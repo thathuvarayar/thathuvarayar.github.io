@@ -13,10 +13,17 @@
 
     <style>
         :root {
-            --color-saffron: #964B00;
+            /* ===== GOLDEN THEME PALETTE (matches index.html) ===== */
+            --color-gold-deep: #b8860b;
             --color-gold: #FFD700;
+            --color-gold-grad-top: #f8d568;
+            --color-gold-grad-bottom: #f0bb2e;
+            --color-gold-pale: #fdf4d6;
+            --color-brown-dark: #5a3912;
+            --color-teal: #0b5e5e;
+            --color-rust: #b5451b;
             --color-dark: #333333;
-            --color-light-bg: #FCF8F3;
+            --color-light-bg: #FFF8E7;
             --font-heading: 'Tiro Tamil', serif;
             --font-body: 'Noto Sans Tamil', sans-serif;
         }
@@ -30,30 +37,41 @@
             scroll-behavior: smooth;
         }
 
-        a { color: var(--color-saffron); text-decoration: none; }
-        a:hover { text-decoration: underline; color: var(--color-gold); }
+        a { color: var(--color-gold-deep); text-decoration: none; }
+        a:hover { text-decoration: underline; color: var(--color-rust); }
 
+        /* ===== NAVBAR - Golden Gradient (matches index.html) ===== */
+        .navbar {
+            background: linear-gradient(90deg, #c98f1f 0%, #e3b23c 50%, #c98f1f 100%) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .navbar-brand {
+            color: #fff8e7 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
         .navbar-nav .nav-link {
-            color: white !important;
+            color: #3a2706 !important;
             font-weight: 700;
-            font-size: 1.1em;
+            font-size: 1.05em;
             border-bottom: 2px solid transparent;
-            transition: border-bottom 0.3s ease;
+            transition: border-bottom 0.3s ease, color 0.3s ease;
         }
         .navbar-nav .nav-link:hover {
-            border-bottom: 2px solid var(--color-gold);
-            color: var(--color-gold) !important;
+            border-bottom: 2px solid #5a3912;
+            color: #fff !important;
         }
 
+        /* ===== FOOTER - Golden Gradient (matches index.html) ===== */
         .footer {
-            background-color: var(--color-saffron);
-            color: white;
+            background: linear-gradient(90deg, #a8780f 0%, #d6a331 50%, #a8780f 100%);
+            color: #fff8e7;
             text-align: center;
             padding: 20px 0;
             font-size: 0.9em;
             margin-top: 40px;
+            box-shadow: inset 0 3px 10px rgba(0,0,0,0.2);
         }
-        .footer a { color: var(--color-gold); }
+        .footer a { color: #3a2706; font-weight: 700; }
 
         /* ================================================= */
         /*         GOLDEN TRADITIONAL CARD UI (Hymn Style)     */
@@ -64,7 +82,7 @@
         }
 
         .trad-card {
-            background: linear-gradient(180deg, #f8d568 0%, #f3c53e 100%);
+            background: linear-gradient(180deg, var(--color-gold-grad-top) 0%, var(--color-gold-grad-bottom) 100%);
             border-radius: 10px;
             padding: 55px 25px 45px;
             position: relative;
@@ -74,7 +92,7 @@
             overflow: hidden;
         }
 
-        /* Folded paper corner effect - top left & top right */
+        /* Folded paper corner effect */
         .trad-card::before,
         .trad-card::after {
             content: "";
@@ -88,12 +106,12 @@
         .trad-card::before {
             left: 0;
             border-width: 0 0 34px 34px;
-            border-color: transparent transparent #fdf4d6 transparent;
+            border-color: transparent transparent var(--color-gold-pale) transparent;
         }
         .trad-card::after {
             right: 0;
             border-width: 0 34px 34px 0;
-            border-color: transparent #fdf4d6 transparent transparent;
+            border-color: transparent var(--color-gold-pale) transparent transparent;
         }
 
         .trad-subtitle {
@@ -107,7 +125,7 @@
 
         .trad-title {
             text-align: center;
-            color: #0e4d2b;
+            color: var(--color-brown-dark);
             font-family: var(--font-heading);
             font-weight: 700;
             font-size: clamp(1.5rem, 4.5vw, 2.1rem);
@@ -116,7 +134,7 @@
 
         .trad-translit {
             text-align: center;
-            color: #0e4d2b;
+            color: var(--color-brown-dark);
             font-style: italic;
             font-size: 1rem;
             margin-bottom: 10px;
@@ -136,7 +154,7 @@
             content: "";
             flex: 1;
             height: 1px;
-            background-color: #9a6b2f;
+            background-color: var(--color-gold-deep);
             opacity: 0.7;
         }
         .ornament-divider svg {
@@ -147,7 +165,7 @@
         .trad-meter {
             text-align: center;
             font-weight: 700;
-            color: #0e4d2b;
+            color: var(--color-brown-dark);
             margin: 5px 0 25px;
             font-size: clamp(1rem, 2.5vw, 1.2rem);
         }
@@ -159,21 +177,21 @@
         }
         .verse-line,
         .verse-line-2 {
-            color: #0b5e5e;
+            color: var(--color-teal);
             font-weight: 600;
             margin: 0;
             font-size: clamp(0.95rem, 2.3vw, 1.08rem);
             line-height: 1.9;
         }
         .verse-num {
-            color: #b5451b;
+            color: var(--color-rust);
             font-weight: 700;
             margin-right: 2px;
         }
 
         .verse-divider {
             border: none;
-            border-top: 1px dashed #9a6b2f;
+            border-top: 1px dashed var(--color-gold-deep);
             max-width: 680px;
             margin: 0 auto 18px;
             opacity: 0.55;
@@ -182,16 +200,30 @@
         .trad-meter-sub {
             text-align: center;
             font-weight: 700;
-            color: #0e4d2b;
+            color: var(--color-brown-dark);
             margin: 35px 0 22px;
             font-size: clamp(1rem, 2.5vw, 1.15rem);
-            border-top: 1px dashed #9a6b2f;
+            border-top: 1px dashed var(--color-gold-deep);
             padding-top: 25px;
         }
 
         .back-btn-wrap {
             text-align: center;
             margin-top: 35px;
+        }
+
+        /* Golden gradient back button (matches index.html buttons) */
+        .back-btn-wrap .btn {
+            background: linear-gradient(180deg, #e9c158, #c98f1f) !important;
+            color: #3a2706 !important;
+            border: none !important;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .back-btn-wrap .btn:hover {
+            background: linear-gradient(180deg, #f3d27a, #d9a637) !important;
+            color: #2a1c05 !important;
+            text-decoration: none;
         }
 
         /* ---------- Responsive tuning ---------- */
@@ -223,11 +255,11 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg sticky-top" style="background-color: var(--color-saffron); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+        <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid container">
-                <a class="navbar-brand text-white" href="index.html" style="font-family: var(--font-heading); font-size: 1.5em;">சுரூபானந்த சோதி</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: white;">
-                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'white\' stroke-width=\'2\' linecap=\'round\' linejoin=\'round\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+                <a class="navbar-brand" href="index.html" style="font-family: var(--font-heading); font-size: 1.5em;">சுரூபானந்த சோதி</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: #3a2706;">
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%233a2706\' stroke-width=\'2\' linecap=\'round\' linejoin=\'round\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
@@ -663,7 +695,7 @@
             </div>
 
             <div class="back-btn-wrap">
-                <a href="index.html#songs" class="btn btn-lg" style="background-color: var(--color-saffron); color: white;">← பாடல்கள் பட்டியலுக்குத் திரும்புக</a>
+                <a href="index.html#songs" class="btn btn-lg">← பாடல்கள் பட்டியலுக்குத் திரும்புக</a>
             </div>
         </div>
     </main>
