@@ -9,14 +9,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;700&family=Tiro+Tamil:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;600;700&family=Tiro+Tamil:ital@0;1&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --color-saffron: #964B00; /* Deep Ochre/Saffron - காவி */
-            --color-gold: #FFD700;    /* Royal Gold */
-            --color-dark: #333333;     /* Dark Text */
-            --color-light-bg: #FCF8F3; /* Off-White/Parchment */
+            /* ===== GOLDEN THEME PALETTE ===== */
+            --color-gold-deep: #b8860b;       /* Deep goldenrod - accents/borders */
+            --color-gold: #FFD700;            /* Bright gold - highlights */
+            --color-gold-grad-top: #f8d568;   /* Card gradient top */
+            --color-gold-grad-bottom: #f0bb2e;/* Card gradient bottom */
+            --color-gold-pale: #fdf4d6;       /* Pale cream for fold corners / nested cards */
+            --color-brown-dark: #5a3912;      /* Headings - rich brown */
+            --color-teal: #0b5e5e;            /* Verse / quote text */
+            --color-rust: #b5451b;            /* Numbers / accent highlights */
+            --color-dark: #333333;
+            --color-light-bg: #FFF8E7;        /* Overall page background - warm cream */
             --font-heading: 'Tiro Tamil', serif;
             --font-body: 'Noto Sans Tamil', sans-serif;
         }
@@ -33,74 +40,148 @@
 
         h1, h2, h3 {
             font-family: var(--font-heading);
-            color: var(--color-saffron);
+            color: var(--color-brown-dark);
             text-align: center;
             margin-top: 0;
         }
 
         a {
-            color: var(--color-saffron);
+            color: var(--color-gold-deep);
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
-            color: var(--color-gold);
+            color: var(--color-rust);
         }
 
-        /* Override Bootstrap Nav Link Color for Saffron/White Theme */
+        /* Navbar - Golden Gradient */
+        .navbar {
+            background: linear-gradient(90deg, #c98f1f 0%, #e3b23c 50%, #c98f1f 100%) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .navbar-brand {
+            color: #fff8e7 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
         .navbar-nav .nav-link {
-            color: white !important;
+            color: #3a2706 !important;
             font-weight: 700;
-            font-size: 1.1em;
+            font-size: 1.05em;
             border-bottom: 2px solid transparent;
-            transition: border-bottom 0.3s ease;
+            transition: border-bottom 0.3s ease, color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid #5a3912;
+            color: #fff !important;
+        }
+        .navbar-toggler-icon {
+            filter: none;
         }
 
-        .navbar-nav .nav-link:hover {
-            border-bottom: 2px solid var(--color-gold);
-            color: var(--color-gold) !important;
-        }
-        
-        /* 2. Hero Section (Home) */
+        /* 2. Hero Section */
         .hero {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(252, 248, 243, 0.8), rgba(252, 248, 243, 0.8)), url('placeholder-image.jpg') center/cover no-repeat;
-            /* **ACTION: Replace 'placeholder-image.jpg' with a serene image of the Saint/Temple** */
+            padding: 90px 20px;
+            background: linear-gradient(160deg, #fdf4d6 0%, #f6d680 45%, #e8b84a 100%);
             min-height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-attachment: fixed; /* Optional: for a parallax effect */
+            box-shadow: inset 0 -8px 25px rgba(184,134,11,0.15);
         }
 
         .hero h1 {
-            color: var(--color-saffron);
-            font-size: 3.5em;
+            color: var(--color-brown-dark);
+            font-size: 3.2em;
             margin-bottom: 10px;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.4);
         }
 
         .hero p {
-            font-size: 1.5em;
-            color: var(--color-dark);
+            font-size: 1.4em;
+            color: #4a330f;
             font-style: italic;
+        }
+        .hero .tamil-name {
+            color: var(--color-rust);
+            font-weight: 700;
+            font-style: normal;
         }
 
         /* 3. Main Content Area */
         .section {
             padding: 60px 0;
-            border-bottom: 1px dashed #DDD;
+            border-bottom: 1px dashed #e0c272;
         }
 
+        /* ===== GOLDEN CARD (major section container) ===== */
         .content-card {
-            background-color: #FFFFFF;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            background: linear-gradient(180deg, var(--color-gold-grad-top) 0%, var(--color-gold-grad-bottom) 100%);
+            padding: 45px 30px 35px;
+            border-radius: 10px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            color: #3a2706;
         }
 
-        /* 4. Song/Poem Layout (தத்துவப் பாடல்கள்) */
+        /* Folded paper corners */
+        .content-card::before,
+        .content-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+            z-index: 1;
+        }
+        .content-card::before {
+            left: 0;
+            border-width: 0 0 28px 28px;
+            border-color: transparent transparent var(--color-gold-pale) transparent;
+        }
+        .content-card::after {
+            right: 0;
+            border-width: 0 28px 28px 0;
+            border-color: transparent var(--color-gold-pale) transparent transparent;
+        }
+
+        .content-card h3 {
+            color: var(--color-brown-dark);
+        }
+        .content-card p {
+            color: #3a2706;
+        }
+        .content-card b {
+            color: var(--color-rust);
+        }
+
+        /* Ornamental divider (optional use inside cards) */
+        .gold-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 420px;
+            margin: 20px auto 28px;
+        }
+        .gold-divider::before,
+        .gold-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--color-gold-deep);
+            opacity: 0.6;
+        }
+        .gold-divider span {
+            margin: 0 12px;
+            color: var(--color-gold-deep);
+            font-size: 1.3rem;
+        }
+
+        /* 4. Song/Poem Layout - golden quote cards */
         .song-list {
             list-style: none;
             padding: 0;
@@ -108,45 +189,127 @@
 
         .song-item {
             margin-bottom: 25px;
-            padding: 20px;
-            border-left: 5px solid var(--color-saffron);
-            background-color: #FFF;
+            padding: 22px 20px;
+            border-radius: 8px;
+            background: var(--color-gold-pale);
+            border-left: 5px solid var(--color-gold-deep);
+            box-shadow: 0 3px 10px rgba(184,134,11,0.15);
         }
 
         .song-item h3 {
             text-align: left;
             margin-bottom: 10px;
+            color: var(--color-brown-dark);
+            font-size: 1.15em;
         }
 
         .song-text {
             white-space: pre-wrap;
-            font-size: 0.7em;
+            font-size: 0.95em;
+            color: var(--color-teal);
+            font-weight: 500;
+            line-height: 2;
         }
-        
-        /* 5. Footer */
+        .song-text b {
+            color: var(--color-rust);
+        }
+
+        .song-item .small.text-muted {
+            color: var(--color-gold-deep) !important;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Lists inside golden card */
+        .content-card ol li {
+            margin-bottom: 6px;
+        }
+
+        /* Buttons - golden gradient */
+        .btn-gold, .song-item + .btn, a.btn {
+            background: linear-gradient(180deg, #e9c158, #c98f1f) !important;
+            color: #3a2706 !important;
+            border: none !important;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        a.btn:hover {
+            background: linear-gradient(180deg, #f3d27a, #d9a637) !important;
+            color: #2a1c05 !important;
+            text-decoration: none;
+        }
+        a.btn.disabled, .btn-outline-secondary.disabled {
+            background: #e8e2d2 !important;
+            color: #8a7f66 !important;
+        }
+
+        /* 5. Songs Table Card */
+        #songs .card {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #songs .card-header {
+            background: linear-gradient(90deg, #c98f1f, #e3b23c) !important;
+        }
+        #songs .card-header h4 {
+            color: #3a2706 !important;
+        }
+        #songs thead {
+            background: linear-gradient(180deg, #f8d568, #f0bb2e) !important;
+        }
+        #songs thead th {
+            color: var(--color-brown-dark) !important;
+            border-bottom: 2px solid var(--color-gold-deep);
+        }
+        #songs tbody tr:hover {
+            background-color: var(--color-gold-pale) !important;
+        }
+        #songs tbody td a {
+            color: var(--color-gold-deep);
+            font-weight: 600;
+        }
+
+        /* 6. Footer - golden gradient */
         .footer {
-            background-color: var(--color-saffron);
-            color: white;
+            background: linear-gradient(90deg, #a8780f 0%, #d6a331 50%, #a8780f 100%);
+            color: #fff8e7;
             text-align: center;
             padding: 20px 0;
             font-size: 0.9em;
             margin-top: 40px;
+            box-shadow: inset 0 3px 10px rgba(0,0,0,0.2);
         }
-        
+
         .footer a {
-            color: var(--color-gold);
+            color: #3a2706;
+            font-weight: 700;
+        }
+
+        /* ---------- Responsive tuning ---------- */
+        @media (max-width: 576px) {
+            .content-card {
+                padding: 32px 16px 24px;
+            }
+            .content-card::before { border-width: 0 0 20px 20px; }
+            .content-card::after  { border-width: 0 20px 20px 0; }
+
+            .hero h1 { font-size: 2.1em; }
+            .hero p { font-size: 1.1em; }
+
+            .song-item { padding: 16px 14px; }
+            .song-text { font-size: 0.88em; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg sticky-top" style="background-color: var(--color-saffron); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+        <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid container">
-                <a class="navbar-brand text-white" href="#home" style="font-family: var(--font-heading); font-size: 1.5em;"> சுரூபானந்த சோதி</a>
+                <a class="navbar-brand" href="#home" style="font-family: var(--font-heading); font-size: 1.5em;"> சுரூபானந்த சோதி</a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: white;">
-                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'white\' stroke-width=\'2\' linecap=\'round\' linejoin=\'round\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: #3a2706;">
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%233a2706\' stroke-width=\'2\' linecap=\'round\' linejoin=\'round\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -787,15 +950,7 @@
                     </div>
                 </div> 
 
-
-
-
-
-
                 </div>
-               
-
-
             </section>
 
             <section id="songs" class="section">
@@ -805,23 +960,23 @@
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
             <div class="card shadow-sm border-0"> 
-                <div class="card-header" style="background-color: var(--color-saffron); color: white;">
-                    <h4 class="mb-0 text-white" style="font-family: var(--font-heading);">
+                <div class="card-header">
+                    <h4 class="mb-0" style="font-family: var(--font-heading);">
                         📖 பாடல்கள் அட்டவணை
                     </h4>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
-                            <thead style="background-color: #F0EAD6;">
+                            <thead>
                                 <tr>
-                                    <th scope="col" class="text-center" style="color: var(--color-saffron); font-size: 1.1em;">
+                                    <th scope="col" class="text-center" style="font-size: 1.1em;">
                                         பாடலின் தலைப்பு
                                     </th>
-                                    <th scope="col" class="text-center" style="color: var(--color-saffron); font-size: 1.1em; width: 150px;">
+                                    <th scope="col" class="text-center" style="font-size: 1.1em; width: 150px;">
                                         வரிகள்
                                     </th>
-                                    <th scope="col" class="text-center" style="color: var(--color-saffron); width: 120px;">
+                                    <th scope="col" class="text-center" style="width: 120px;">
                                         முழுமையாகப் படிக்க
                                     </th>
                                 </tr>
@@ -831,21 +986,21 @@
                                     <td><a href="திருவடிமாலை.html">திருவடிமாலை</a></td>
                                     <td class="text-center">65</td>
                                     <td class="text-center">
-                                        <a href="திருவடிமாலை.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="திருவடிமாலை.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><a href="திருவருட்கழன்_மாலை.html">திருவருட்கழன் மாலை</a></td>
                                     <td class="text-center">96</td>
                                     <td class="text-center">
-                                        <a href="திருவருட்கழன்_மாலை.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="திருவருட்கழன்_மாலை.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><a href="போற்றி_மாலை.html">போற்றி மாலை </a></td>
                                     <td class="text-center">88</td>
                                     <td class="text-center">
-                                        <a href="போற்றி_மாலை.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="போற்றி_மாலை.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
 
@@ -853,7 +1008,7 @@
                                     <td><a href="புகழ்ச்சி_மாலை.html">புகழ்ச்சி மாலை </a></td>
                                     <td class="text-center">88</td>
                                     <td class="text-center">
-                                        <a href="புகழ்ச்சி_மாலை.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="புகழ்ச்சி_மாலை.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
 
@@ -861,7 +1016,7 @@
                                     <td><a href="நமஸ்கார_சங்கீர்த்தனம்.html">நமஸ்கார சங்கீர்த்தனம்</a></td>
                                     <td class="text-center">10</td>
                                     <td class="text-center">
-                                        <a href="நமஸ்கார_சங்கீர்த்தனம்.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="நமஸ்கார_சங்கீர்த்தனம்.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
 
@@ -869,7 +1024,7 @@
                                     <td><a href="போற்றி_சங்கீர்த்தனம்.html">போற்றி சங்கீர்த்தனம்</a></td>
                                     <td class="text-center">10</td>
                                     <td class="text-center">
-                                        <a href="போற்றி_சங்கீர்த்தனம்.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="போற்றி_சங்கீர்த்தனம்.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
 
@@ -877,7 +1032,7 @@
                                     <td><a href="திருநாம_சங்கீர்த்தனம்.html">திருநாம சங்கீர்த்தனம்</a></td>
                                     <td class="text-center">10</td>
                                     <td class="text-center">
-                                        <a href="திருநாம_சங்கீர்த்தனம்.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="திருநாம_சங்கீர்த்தனம்.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
 
@@ -885,7 +1040,7 @@
                                     <td><a href="மஹாதேவம்.html">மஹாதேவம்</a></td>
                                     <td class="text-center">10</td>
                                     <td class="text-center">
-                                        <a href="மஹாதேவம்.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="மஹாதேவம்.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
 
@@ -893,7 +1048,7 @@
                                     <td><a href="அருட்கழல்_விளக்கம்.html">அருட்கழல் விளக்கம்</a></td>
                                     <td class="text-center">09</td>
                                     <td class="text-center">
-                                        <a href="அருட்கழல்_விளக்கம்.html" class="btn btn-sm" style="background-color: var(--color-saffron); color: white;">படிக்க</a>
+                                        <a href="அருட்கழல்_விளக்கம்.html" class="btn btn-sm">படிக்க</a>
                                     </td>
                                 </tr>
 
@@ -924,5 +1079,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
