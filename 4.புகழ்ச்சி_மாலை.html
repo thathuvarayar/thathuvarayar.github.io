@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>புகழ்ச்சி மாலை | சுரூபானந்த சோதி | தத்துவராயர்</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;600;700&family=Tiro+Tamil:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* ===== GOLDEN THEME PALETTE (matches index.html) ===== */
+            --color-gold-deep: #b8860b;
+            --color-gold: #FFD700;
+            --color-gold-grad-top: #f8d568;
+            --color-gold-grad-bottom: #f0bb2e;
+            --color-gold-pale: #fdf4d6;
+            --color-brown-dark: #5a3912;
+            --color-teal: #0b5e5e;
+            --color-rust: #b5451b;
+            --color-dark: #333333;
+            --color-light-bg: #FFF8E7;
+            --font-heading: 'Tiro Tamil', serif;
+            --font-body: 'Noto Sans Tamil', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-light-bg);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a { color: var(--color-gold-deep); text-decoration: none; }
+        a:hover { text-decoration: underline; color: var(--color-rust); }
+
+        /* ===== NAVBAR - Golden Gradient (matches index.html) ===== */
+        .navbar {
+            background: linear-gradient(90deg, #c98f1f 0%, #e3b23c 50%, #c98f1f 100%) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .navbar-brand {
+            color: #fff8e7 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: #3a2706 !important;
+            font-weight: 700;
+            font-size: 1.05em;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease, color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid #5a3912;
+            color: #fff !important;
+        }
+
+        /* ===== FOOTER - Golden Gradient (matches index.html) ===== */
+        .footer {
+            background: linear-gradient(90deg, #a8780f 0%, #d6a331 50%, #a8780f 100%);
+            color: #fff8e7;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            margin-top: 40px;
+            box-shadow: inset 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .footer a { color: #3a2706; font-weight: 700; }
+
+        /* ================================================= */
+        /*         GOLDEN TRADITIONAL CARD UI (Hymn Style)     */
+        /* ================================================= */
+
+        .trad-wrapper {
+            padding: 10px 10px 40px;
+        }
+
+        .trad-card {
+            background: linear-gradient(180deg, var(--color-gold-grad-top) 0%, var(--color-gold-grad-bottom) 100%);
+            border-radius: 10px;
+            padding: 55px 25px 45px;
+            position: relative;
+            max-width: 920px;
+            margin: 0 auto;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+            overflow: hidden;
+        }
+
+        /* Folded paper corner effect */
+        .trad-card::before,
+        .trad-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+        }
+        .trad-card::before {
+            left: 0;
+            border-width: 0 0 34px 34px;
+            border-color: transparent transparent var(--color-gold-pale) transparent;
+        }
+        .trad-card::after {
+            right: 0;
+            border-width: 0 34px 34px 0;
+            border-color: transparent var(--color-gold-pale) transparent transparent;
+        }
+
+        .trad-subtitle {
+            text-align: center;
+            color: #2255aa;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .trad-title {
+            text-align: center;
+            color: var(--color-brown-dark);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+            margin-bottom: 4px;
+        }
+
+        .trad-translit {
+            text-align: center;
+            color: var(--color-brown-dark);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            opacity: 0.85;
+        }
+
+        /* Ornamental divider */
+        .ornament-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 480px;
+            margin: 18px auto 28px;
+        }
+        .ornament-divider::before,
+        .ornament-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--color-gold-deep);
+            opacity: 0.7;
+        }
+        .ornament-divider svg {
+            margin: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .trad-meter {
+            text-align: center;
+            font-weight: 700;
+            color: var(--color-brown-dark);
+            margin: 5px 0 25px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        .verse-block {
+            text-align: center;
+            margin: 0 auto 16px;
+            max-width: 760px;
+        }
+        .verse-line,
+        .verse-line-2 {
+            color: var(--color-teal);
+            font-weight: 600;
+            margin: 0;
+            font-size: clamp(0.95rem, 2.3vw, 1.08rem);
+            line-height: 1.9;
+        }
+        .verse-num {
+            color: var(--color-rust);
+            font-weight: 700;
+            margin-right: 2px;
+        }
+
+        .verse-divider {
+            border: none;
+            border-top: 1px dashed var(--color-gold-deep);
+            max-width: 680px;
+            margin: 0 auto 18px;
+            opacity: 0.55;
+        }
+
+        .trad-meter-sub {
+            text-align: center;
+            font-weight: 700;
+            color: var(--color-brown-dark);
+            margin: 35px 0 22px;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            border-top: 1px dashed var(--color-gold-deep);
+            padding-top: 25px;
+        }
+
+        .back-btn-wrap {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        /* Golden gradient back button (matches index.html buttons) */
+        .back-btn-wrap .btn {
+            background: linear-gradient(180deg, #e9c158, #c98f1f) !important;
+            color: #3a2706 !important;
+            border: none !important;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .back-btn-wrap .btn:hover {
+            background: linear-gradient(180deg, #f3d27a, #d9a637) !important;
+            color: #2a1c05 !important;
+            text-decoration: none;
+        }
+
+        /* ---------- Responsive tuning ---------- */
+        @media (max-width: 576px) {
+            .trad-card {
+                padding: 42px 15px 32px;
+                border-radius: 8px;
+            }
+            .trad-card::before { border-width: 0 0 24px 24px; }
+            .trad-card::after  { border-width: 0 24px 24px 0; }
+
+            .trad-title { font-size: 1.35rem; }
+            .trad-subtitle { font-size: 0.85rem; }
+            .trad-translit { font-size: 0.9rem; }
+
+            .verse-line, .verse-line-2 {
+                font-size: 0.92rem;
+                line-height: 1.8;
+            }
+
+            .ornament-divider svg { width: 70px; height: 26px; }
+        }
+
+        @media (max-width: 400px) {
+            .verse-line, .verse-line-2 { font-size: 0.88rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container-fluid container">
+                <a class="navbar-brand" href="index.html" style="font-family: var(--font-heading); font-size: 1.5em;">சுரூபானந்த சோதி</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: #3a2706;">
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%233a2706\' stroke-width=\'2\' linecap=\'round\' linejoin=\'round\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html#home">முகப்பு</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#history">தத்துவராயர் வரலாறு</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#preaching">தத்துவ ஞான மார்க்கம்</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#about_religions">சமய சாத்திரம் வாசி பற்றி</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#songs">பாடல்கள்</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <div class="trad-wrapper">
+            <div class="trad-card">
+
+                <p class="trad-subtitle">தத்துவ ஞான மார்க்கம்</p>
+                <h2 class="trad-title">🙏 புகழ்ச்சி மாலை </h2>
+                <p class="trad-translit">குரு துரிய மகான் தத்துவராயர் அருளியது</p>
+
+                <div class="ornament-divider">
+                    <svg width="90" height="30" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke="#9a6b2f" stroke-width="1.5">
+                            <path d="M10,20 C20,5 35,5 40,20 C35,35 20,35 10,20 Z"/>
+                            <circle cx="60" cy="20" r="5" fill="#9a6b2f" stroke="none"/>
+                            <path d="M110,20 C100,5 85,5 80,20 C85,35 100,35 110,20 Z"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <p class="trad-meter">கலிவெண்பா</p>
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">1.</span>திருநாமம் போற்றுந் திறமறியேற் கிந்த</p>
+                    <p class="verse-line-2">விருநா னிலத்தி னிடையே - யொருநாம</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">2.</span>மோருருவ மொன்றுமிலா வுன்மேனி காட்டவருஞ்</p>
+                    <p class="verse-line-2">சீருடைய செம்பொற் றிருவடியா - யாரமிர்தே</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">3.</span>தித்திக்குந் தேனே தெளிவிலா நாயேற்கும்</p>
+                    <p class="verse-line-2">பத்தித் திறமிருக்கும் பண்பளித்தாய் - முத்திக்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">4.</span>குடையானே யென்னையாட் கொண்டானே யெண்டிக்</p>
+                    <p class="verse-line-2">குடையானே யென்னையுடை யானே - கடையானேன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">5.</span>மாளா வகைவந்த வள்ளலே மெய்ப்படவே</p>
+                    <p class="verse-line-2">யாளா மடியவர்கட் கன்பனே - சூளா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">6.</span>மணியே மரகதமே மாற்றிலாச் செம்பொ</p>
+                    <p class="verse-line-2">னணியே யெனக்கணியை யானாய் - திணியவெறும்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">7.</span>பொய்யு மிருளும் பொருந்து மனங்கரையச்</p>
+                    <p class="verse-line-2">செய்யு மருட்கட் செழுஞ்சுடரே - மெய்யன்பா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">8.</span>லாளான நல்ல வடியார் பிழையென்றுங்</p>
+                    <p class="verse-line-2">கேளானே யென்னுடைய கேளானே - மீளார்க்குத்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">9.</span>தோன்றானே தோற்றி யளித்தழிக்குஞ் சோதியுரு</p>
+                    <p class="verse-line-2">மூன்றானே யோரிடத்து மூன்றானே -வான்றீகான்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">10.</span>மண்ணலாய் நீரலாய் மாமலர்த்தாள் சூடாதார்க்</p>
+                    <p class="verse-line-2">கண்ணலாய் நாயேனுக் கண்ணலாய் - பெண்ணலா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">11.</span>யாணலா யன்றி யலியலா யென்றனக்குங்</p>
+                    <p class="verse-line-2">காணலாய் வந்த கருணையே நாணிலா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">12.</span>தென்னையு மாண்டருளு மெந்தையே யென்மனமாங்</p>
+                    <p class="verse-line-2">கன்னையு மாறு கடைக்கணித்தா - யன்னையிலு</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">13.</span>நல்லானே வேண்டியவா நான்செய்ய முத்திதர</p>
+                        <p class="verse-line-2">வல்லானே யென்றனக்கு வாய்த்தானே - சொல்லோடு</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">14.</span>செய்திமன மொவ்வாத தீமையேன் செய்பணியுங்</p>
+                    <p class="verse-line-2">கைதவமே யென்றறியக் கல்லானே - மைதீர்ந்த</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">15.</span>சோதி யுருவே சுரூபானந் தச்சுடரே</p>
+                    <p class="verse-line-2">யாதி யுடனடுவீ றற்றானே - நீதியா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">16.</span>மேலானே கீழா மடியேற்கு வீடளித்த</p>
+                    <p class="verse-line-2">காலானே நாயேன்றன் கைப்பொருளே - நாலான</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">17.</span>வேதங்க ளேமுதலா மெய்ந்நூல்க ளாலுன்றன்</p>
+                    <p class="verse-line-2">பாதங்கள் போற்றறிய பண்புடையாய் - வாதங்கட்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">18.</span>கெட்டானே முன்னூல்க ளெண்ணுகின்ற வெட்டுருவத்</p>
+                    <p class="verse-line-2">தொட்டானே சிட்டருளத்தமிர்தே - கிட்டானே</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">19.</span>விண்ணோர்க டங்களுக்கு மேதினிமே னீதீயிலேன்</p>
+                    <p class="verse-line-2">கண்ணார வந்தருளுங் கார்முகிலே - பண்ணார்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">20.</span>மொழியார் விழிவலையான் மொத்துண்டு நாயே</p>
+                    <p class="verse-line-2">னழியாமைக் காத்த வரசே - யொழியாதே</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">21.</span>யெப்பொருட்கு மெவ்விடத்து மெக்காலத் துங்கலந்த</p>
+                    <p class="verse-line-2">செப்பொருளே யெப்பொருட்குஞ் சேயானே யப்பொழுதைக்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">22.</span>கப்பொழுது மாராவமிர்தே யடியடைந்தார்க்</p>
+                    <p class="verse-line-2">கெப்பொழுதுந் தித்திக்கு மின்சுவையே - செப்பரிய</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">23.</span>பூவோன் முதலாகப் புல்லீறு பல்லுருவாய்</p>
+                    <p class="verse-line-2">நீவேறு பட்டாய் நிராமயனே - யாவேறு</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">24.</span>பால்போ லொருதன்மைப் பட்ட பரம்பொருளே</p>
+                    <p class="verse-line-2">நூல்போ யுணர்வரிய நுண்ணுணர்வே - வேல்போலுங்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">25.</span>கண்ணார்தம் பார்வையாற் கட்டுண்டு கள்ளமுறும்</p>
+                    <p class="verse-line-2">பண்ணார் மொழிகள் பலவுங்கேட் - டண்ணாந்து</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">26.</span>நிற்கு மதியிலியே னேயமிலா னெஞ்சென்னுங்</p>
+                    <p class="verse-line-2">கற்கரையச் செய்ததிருக் கண்ணனே - நற்கமலப்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">27.</span>பாதந் தொழவறியாப் பாவியேற் குன்னறியும்</p>
+                    <p class="verse-line-2">போதந் தரவந்த புண்ணியனே - யேதங்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">28.</span>கெடுத்தானே கேடிலா நின்பாதங் காட்டி</p>
+                    <p class="verse-line-2">யெடுத்தானே யென்னாருயிரே - தடுத்தாண்டு</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">29.</span>கொண்டானே யேதுங் குணமிலே னென்றறிந்துந்</p>
+                    <p class="verse-line-2">தொண்டாகக் கொண்ட சுடரொளியே - கண்டா னொன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">30.</span>றில்லாத தீங்கரும்பே யாவர்க்குங் கீழேனுக்</p>
+                    <p class="verse-line-2">கல்லாதா ளுள்ள வறியானே - பல்லுயிரு</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">31.</span>மீன்றானே யேழையேன் கண்ணொழிய யாவர்க்குந்</p>
+                    <p class="verse-line-2">தோன்றாது நின்ற சுரூபனே - மூன்றாய</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">32.</span>காலமே காலங் கடந்திடமே யெப்பொருட்கு</p>
+                    <p class="verse-line-2">மூலமே யாவு முடிந்திடமே -கோலங்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">33.</span>கரியாய் வெளியாய்நீ செய்யாய் கருத</p>
+                    <p class="verse-line-2">வரியா யெளியா யனந்த - விரிவே</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">34.</span>யொடுக்கமே பற்பலவா யோதுகின்ற லோகத்</p>
+                    <p class="verse-line-2">தடுக்கமே யவ்வுலகுக் காணி - யடுத்தவடி</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">35.</span>வாகும் பளிங்கேபோல் யாதினுக்கு மவ்வவையாய்</p>
+                    <p class="verse-line-2">நீகுன்றி லாத நிறையொளியே - யோகொன்றி</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">36.</span>லொட்டானே யொன்றறியா வுன்மத்தன் கையிலகப்</p>
+                    <p class="verse-line-2">பட்டானே யெட்டாய பல்லுயிரே - யெட்டா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">37.</span>வகலமே வண்மையின்மற் றண்மையே யெண்ணுஞ்</p>
+                    <p class="verse-line-2">சகலமே யொன்றாநீ தானே - பகலிரவொன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">38.</span>றில்லா விரவியே யிவ்வண்ணத் துன்னுருவைச்</p>
+                    <p class="verse-line-2">சொல்லாதே நான்காணச் சொன்னவனே - யெல்லாமாய்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">39.</span>நின்றானே யொன்றுபலா நின்மலனே துன்மனத்தி</p>
+                    <p class="verse-line-2">லொன்றானே நீமுடிவி லொன்றானே - குன்றா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">40.</span>வொளியானே யென்னை யுவந்தாண்டு கொள்ள</p>
+                    <p class="verse-line-2">வெளியானே சால வெளியாய் - தெளியாதேன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">41.</span>வெற்றவெறும் பொய்யேன் மெய்யடியார் போ லுன்சீர்</p>
+                    <p class="verse-line-2">கற்றுப் பிதற்றுமது காதலொடுங் - குற்றமெனக்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">42.</span>கொள்ளா தெனக்குங் குரைகழறந் தாட்கொண்டு</p>
+                    <p class="verse-line-2">விள்ளாதென் னுள்ளிருக்கும் வித்தகனே - யெள்ளா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">43.</span>வறிவே யறிவடங்கு மாலயமாய் நின்ற</p>
+                    <p class="verse-line-2">செறிவே யெலாங்கடந்த தேசே - பிறிவதறத்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">44.</span>தேசாய மேனி தெளிந்தடைந்தோர் சேர்ந்தமைந்த</p>
+                    <p class="verse-line-2">வாசாம கோசரமே மற்றெவைக்கு - நீசான்றாய்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">45.</span>நின்றா யடியேற்கு நீயளித்த கண்ணதனா</p>
+                    <p class="verse-line-2">லொன்றாகப் பார்த்தளவி லுன்னையலா - தின்றி</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">46.</span>யிருந்த தினியடியே னேதாமென் றென்று</p>
+                    <p class="verse-line-2">திருந்து புகழுன்னைச் செய்வேன் - பொருந்தவுனை</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">47.</span>யாதி யிமையோர்க ளவ்வுலகின் றிவ்வுலகிற்</p>
+                    <p class="verse-line-2">போத முனஞ்செய்த புண்ணியத்தா - னாதன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">48.</span>றரணி மிசையதனிற் றாளடைந்தார் சன்ம</p>
+                    <p class="verse-line-2">மரண மறவருள வந்து - கரணங்கட்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">49.</span>கெட்டா வொளியை யிதுவென்று கண்காணு</p>
+                    <p class="verse-line-2">மட்டாக்கு மென்று வரநினைந்து - கிட்டாராய்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">50.</span>நன்மையான் மிக்கவர்க ணின்றுணங்க நாடரிய</p>
+                    <p class="verse-line-2">தன்மையான் றன்னைத்  தரவென்னக் - கெண்மையாற்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">51.</span>றன்னா லவத்தை பலவாகத் தான்பாவித்</p>
+                    <p class="verse-line-2">தென்னா லனைத்து மிலவாக்கித் -  தன்னாகத்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">52.</span>தன்னாலே யென்னைத் தனதுருவே தானாக்கி</p>
+                    <p class="verse-line-2">யென்னாலே தற்றுதித்த வென்னானை - முன்னான</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">53.</span>வென்னரச னென்னப்ப னெம்பெருமா னென்றென்று</p>
+                    <p class="verse-line-2">நின்னரிய பொன்னடிக்கே நின்றிறைஞ்சி -யுன்னரிய</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">54.</span>வீசனே யெந்தையே யாவர்க்குங் காண்பரிய</p>
+                    <p class="verse-line-2">தேசனே யென்றென்று செப்புவார் - நேசமொடுன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">55.</span>பாதம் பணிவார் பரம்பரனே யென்றிசைப்பார்</p>
+                    <p class="verse-line-2">வாதங்கட் கெட்டாத வாழ்வென்பார் - போதத்தா</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">56.</span>லாய்தற் கரிய வறிவென்பா ரென்னவலங்</p>
+                    <p class="verse-line-2">காய்தற்குத் தோன்றுங் கனலென்பார் - மாய்தற்கே</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">57.</span>வல்லேனை மாளா வகைகாக்க மண்ணில்வரு</p>
+                    <p class="verse-line-2">நல்லோனே யென்று நலங்கிளப்பார் - பல்லுயிர்க்குங்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">58.</span>கோன்றானே யென்பார் குருபரனாய் வீடருளுஞ்</p>
+                    <p class="verse-line-2">சான்றோனே யென்று சதுரழிவார் - தோன்று பெருஞ்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">59.</span>சோதியே யென்பார் சுரூபானந் தாவென்பா</p>
+                    <p class="verse-line-2">ராதியே யென்பா ரகமகிழ்வார் - நீதியழிந்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">60.</span>தார்ப்பா ரரற்றுவா ராலிப்பார் கோலத்தைப்</p>
+                    <p class="verse-line-2">பார்ப்பார் மலர்ப்பாதம் பற்றுவார் - வேர்ப்பார்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">61.</span>விழுவார் தொழுதெழுவார் விம்முவார் விம்மி</p>
+                    <p class="verse-line-2">யழுவா ரதிசயிப்பா ராவார் - வழுவாம</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">62.</span>லிப்படிநீ யெப்பிறப்பு மாளி லெழில்வீடாஞ்</p>
+                    <p class="verse-line-2">செப்பதமுந் தீதென்று செப்புவா - ரெப்பொழுதுந்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">63.</span>போற்றுவார் நல்ல புகழ்மாலை கொண்டடிமே</p>
+                    <p class="verse-line-2">லேற்றுவா ரென்செய்வே மென்றுரைப்பா - ராற்றே</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">64.</span>முடையானே யென்பா ருரைமறப்பார் யார்க்குங்</p>
+                    <p class="verse-line-2">கிடையானே யென்று கிளப்பார் - கடையேனைத்</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">65.</span>தொண்டாகக் கொண்டருளுந் தூயோனே நாயடியேன்</p>
+                    <p class="verse-line-2">கண்டானே யென்று களித்திடுவார் - கொண்டுகொண்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">66.</span>டேத்துவார் கும்பிடுவா ரெந்தாய்நின் கோலத்தைப்</p>
+                    <p class="verse-line-2">பார்த்துவாழ் வார்நின் பழவடியார் - நாத்தழும்பப்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">67.</span>போற்று மவருட் புலையேனை யும்வைத்துச்</p>
+                    <p class="verse-line-2">சீர்த்த திருமேனித் திறங்காட்டிச் - சாற்றுமறை</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">68.</span>நாடும் பரம்பொருளாய் நான்றெளிந்து பக்தியுடன்</p>
+                    <p class="verse-line-2">பாடும் பரிசு பணித் தருளித் - தேடுகின்ற</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">69.</span>விண்ணோர்கள் புண்ணியநீர் மெய்விரும்பா தென்னுடைய</p>
+                    <p class="verse-line-2">கண்ணீரா மஞ்சனமே காதலித்துப் - பண்ணாரும்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">70.</span>வேதமுதல் வெவ்வேறு போற்றிசைத்த மெய்ம்மாலை</p>
+                    <p class="verse-line-2">பாத மணியாதிப் பாரதனி - லாதமிலி</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">71.</span>நாயேனை நீயாக்கி நானோதும் பாமாலை</p>
+                    <p class="verse-line-2">யாயாம லாதரத்தோ டாங்கணிந்து - தேயமெலா</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">72.</span>மாக்குந் திருப்போ னகமமுது செய்யாதென்</p>
+                    <p class="verse-line-2">னாக்கு முயிரை யமுதாக்கி - நீக்கின்றி</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">73.</span>நின்றா யிதுநினையே னெஞ்சுருகே லுள்ளழியே</p>
+                    <p class="verse-line-2">னுன்றாள் பணியும் வகையுணரே - னொன்றாகப்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">74.</span>பாரே னுனையடியேன் பாவியேன் வையமெலா</p>
+                    <p class="verse-line-2">மாரேனீ யாண்ட வருளுரையே - னூரூர்போய்ச்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">75.</span>சாற்றே னகமகிழேன் சம்பிரமத் துன்பாதம்</p>
+                    <p class="verse-line-2">போற்றேன் புகழ்ந்து புகழ்ந்துரையே - னாற்றேனான்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">76.</span>செய்யும் வகையறியேன் றீவினையேன் சேவடி சேர்ந்</p>
+                    <p class="verse-line-2">துய்யும் வகையருளா யுத்தமனே - பொய்யன்றி</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">77.</span>மெய்யேநான் செய்கின்ற விண்ணப்பங் கேட்டருளி</p>
+                    <p class="verse-line-2">யையே யருள வதுவேண்டுந் - துய்யதிருப்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">78.</span>பாதந் தொழவென்கை பார்மிசைமேல் வந்தாண்ட</p>
+                    <p class="verse-line-2">நாதன் றனைத்துதிக்க நாமனமுங் - கேதமறச்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">79.</span>சிந்திக்க வின்னருளைச் செய்யதிரு மேனியைக்கண்</p>
+                    <p class="verse-line-2">பந்திக்க வென்புன் றலைபரனை - வந்திக்க</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">80.</span>வென்று முரைப்ப ரெழிலடியார் யானதனி</p>
+                    <p class="verse-line-2">லொன்று முரைக்க வுளத்தெண்ணேன் - பொன்றுங்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">81.</span>கடையெலாங் காய்பசியை யஞ்சுதலா னாயேன்</p>
+                    <p class="verse-line-2">விடயமே மெய்விரும்ப லுற்றேன் - கொடுவினையேன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">82.</span>மாயவிட யத்தே மயங்கா வகையருள</p>
+                    <p class="verse-line-2">றீய தெனிற்ச்சமிக்கச் செய்தருளல் - காயந்தான்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">83.</span>வீய வருளல் விரும்படியார் சிந்தையகத்</p>
+                    <p class="verse-line-2">தாய பெரும்பத்தி யாங்கருள - னீயருளிச்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">84.</span>செய்யா தொழிதியேற் றீவினையேன் போய்நரகுக்</p>
+                    <p class="verse-line-2">கையா வொருவ னெனவமைவேன் - வையகத்தா</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">85.</span>ருன்னடியே னேதேனு மானா லுனையிகழ்வா</p>
+                    <p class="verse-line-2">ரென்னுடைய தீநெஞ்சை யாரரிவார் - பொன்னடிகள்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">86.</span>கூடும் பரிசு குறித்தருளி மற்றவைகொண்</p>
+                    <p class="verse-line-2">டாடும் பரிசெனக்கு மன்பருளிக் - கோடுமனன்</p>
+                </div>
+                <hr class="verse-divider">
+
+                  <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">87.</span>போகுந் திறமருளிப் புண்ணியனே நின்னுருவே</p>
+                    <p class="verse-line-2">யாகுந் திறனே யருள். </p>
+                </div>
+          
+                
+
+                <p class="trad-meter-sub"></p>
+
+                <div class="verse-block">
+                    <p class="verse-line"></p>
+                    <p class="verse-line-2"></p>
+                    <p class="verse-line-2"></p>
+                    <p class="verse-line-2"></p>
+                </div>
+
+            </div>
+
+            <div class="back-btn-wrap">
+                <a href="index.html#songs" class="btn btn-lg">← பாடல்கள் பட்டியலுக்குத் திரும்புக</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="mb-1">&copy; 2026 தத்துவ ஞான மார்க்கம் | Mahan Thathuvarayar | சுரூபானந்த சோதி</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
