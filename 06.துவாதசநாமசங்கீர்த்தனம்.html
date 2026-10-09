@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>துவாதசநாம சங்கீர்த்தனம் | சுரூபானந்த சோதி | தத்துவராயர்</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;600;700&family=Tiro+Tamil:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* ===== GOLDEN THEME PALETTE (matches index.html) ===== */
+            --color-gold-deep: #b8860b;
+            --color-gold: #FFD700;
+            --color-gold-grad-top: #f8d568;
+            --color-gold-grad-bottom: #f0bb2e;
+            --color-gold-pale: #fdf4d6;
+            --color-brown-dark: #5a3912;
+            --color-teal: #0b5e5e;
+            --color-rust: #b5451b;
+            --color-dark: #333333;
+            --color-light-bg: #FFF8E7;
+            --font-heading: 'Tiro Tamil', serif;
+            --font-body: 'Noto Sans Tamil', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-light-bg);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a { color: var(--color-gold-deep); text-decoration: none; }
+        a:hover { text-decoration: underline; color: var(--color-rust); }
+
+        /* ===== NAVBAR - Golden Gradient (matches index.html) ===== */
+        .navbar {
+            background: linear-gradient(90deg, #c98f1f 0%, #e3b23c 50%, #c98f1f 100%) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .navbar-brand {
+            color: #fff8e7 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: #3a2706 !important;
+            font-weight: 700;
+            font-size: 1.05em;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease, color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid #5a3912;
+            color: #fff !important;
+        }
+
+        /* ===== FOOTER - Golden Gradient (matches index.html) ===== */
+        .footer {
+            background: linear-gradient(90deg, #a8780f 0%, #d6a331 50%, #a8780f 100%);
+            color: #fff8e7;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            margin-top: 40px;
+            box-shadow: inset 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .footer a { color: #3a2706; font-weight: 700; }
+
+        /* ================================================= */
+        /*         GOLDEN TRADITIONAL CARD UI (Hymn Style)     */
+        /* ================================================= */
+
+        .trad-wrapper {
+            padding: 10px 10px 40px;
+        }
+
+        .trad-card {
+            background: linear-gradient(180deg, var(--color-gold-grad-top) 0%, var(--color-gold-grad-bottom) 100%);
+            border-radius: 10px;
+            padding: 55px 25px 45px;
+            position: relative;
+            max-width: 920px;
+            margin: 0 auto;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+            overflow: hidden;
+        }
+
+        /* Folded paper corner effect */
+        .trad-card::before,
+        .trad-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+        }
+        .trad-card::before {
+            left: 0;
+            border-width: 0 0 34px 34px;
+            border-color: transparent transparent var(--color-gold-pale) transparent;
+        }
+        .trad-card::after {
+            right: 0;
+            border-width: 0 34px 34px 0;
+            border-color: transparent var(--color-gold-pale) transparent transparent;
+        }
+
+        .trad-subtitle {
+            text-align: center;
+            color: #2255aa;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .trad-title {
+            text-align: center;
+            color: var(--color-brown-dark);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+            margin-bottom: 4px;
+        }
+
+        .trad-translit {
+            text-align: center;
+            color: var(--color-brown-dark);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            opacity: 0.85;
+        }
+
+        /* Ornamental divider */
+        .ornament-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 480px;
+            margin: 18px auto 28px;
+        }
+        .ornament-divider::before,
+        .ornament-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--color-gold-deep);
+            opacity: 0.7;
+        }
+        .ornament-divider svg {
+            margin: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .trad-meter {
+            text-align: center;
+            font-weight: 700;
+            color: var(--color-brown-dark);
+            margin: 5px 0 25px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        .verse-block {
+            text-align: center;
+            margin: 0 auto 16px;
+            max-width: 760px;
+        }
+        .verse-line,
+        .verse-line-2 {
+            color: var(--color-teal);
+            font-weight: 600;
+            margin: 0;
+            font-size: clamp(0.95rem, 2.3vw, 1.08rem);
+            line-height: 1.9;
+        }
+        .verse-num {
+            color: var(--color-rust);
+            font-weight: 700;
+            margin-right: 2px;
+        }
+
+        .verse-divider {
+            border: none;
+            border-top: 1px dashed var(--color-gold-deep);
+            max-width: 680px;
+            margin: 0 auto 18px;
+            opacity: 0.55;
+        }
+
+        .trad-meter-sub {
+            text-align: center;
+            font-weight: 700;
+            color: var(--color-brown-dark);
+            margin: 35px 0 22px;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            border-top: 1px dashed var(--color-gold-deep);
+            padding-top: 25px;
+        }
+
+        .back-btn-wrap {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        /* Golden gradient back button (matches index.html buttons) */
+        .back-btn-wrap .btn {
+            background: linear-gradient(180deg, #e9c158, #c98f1f) !important;
+            color: #3a2706 !important;
+            border: none !important;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .back-btn-wrap .btn:hover {
+            background: linear-gradient(180deg, #f3d27a, #d9a637) !important;
+            color: #2a1c05 !important;
+            text-decoration: none;
+        }
+
+        /* ---------- Responsive tuning ---------- */
+        @media (max-width: 576px) {
+            .trad-card {
+                padding: 42px 15px 32px;
+                border-radius: 8px;
+            }
+            .trad-card::before { border-width: 0 0 24px 24px; }
+            .trad-card::after  { border-width: 0 24px 24px 0; }
+
+            .trad-title { font-size: 1.35rem; }
+            .trad-subtitle { font-size: 0.85rem; }
+            .trad-translit { font-size: 0.9rem; }
+
+            .verse-line, .verse-line-2 {
+                font-size: 0.92rem;
+                line-height: 1.8;
+            }
+
+            .ornament-divider svg { width: 70px; height: 26px; }
+        }
+
+        @media (max-width: 400px) {
+            .verse-line, .verse-line-2 { font-size: 0.88rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container-fluid container">
+                <a class="navbar-brand" href="index.html" style="font-family: var(--font-heading); font-size: 1.5em;">சுரூபானந்த சோதி</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: #3a2706;">
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%233a2706\' stroke-width=\'2\' linecap=\'round\' linejoin=\'round\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html#home">முகப்பு</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#history">தத்துவராயர் வரலாறு</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#preaching">தத்துவ ஞான மார்க்கம்</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#about_religions">சமய சாத்திரம் வாசி பற்றி</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#songs">பாடல்கள்</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <div class="trad-wrapper">
+            <div class="trad-card">
+
+                <p class="trad-subtitle">தத்துவ ஞான மார்க்கம்</p>
+                <h2 class="trad-title">🙏 துவாதசநாம சங்கீர்த்தனம் </h2>
+                <p class="trad-translit">குரு துரிய மகான் தத்துவராயர் அருளியது</p>
+
+                <div class="ornament-divider">
+                    <svg width="90" height="30" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke="#9a6b2f" stroke-width="1.5">
+                            <path d="M10,20 C20,5 35,5 40,20 C35,35 20,35 10,20 Z"/>
+                            <circle cx="60" cy="20" r="5" fill="#9a6b2f" stroke="none"/>
+                            <path d="M110,20 C100,5 85,5 80,20 C85,35 100,35 110,20 Z"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <p class="trad-meter">எண்சீர்க்கழி நெடி லடியாசிரியவிருத்தம்</p>
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">1.</span>பேச வாதிமறை நாலு மோர்விரகு</p>
+                    <p class="verse-line-2">பேசி லாமைநனி பேசு பாதநம</p>
+                    <p class="verse-line-2">கூச வானவர்கள் கூற யானுனடி</p>
+                    <p class="verse-line-2">கூறு மாறுனருள் கூரு கோலாநம</p>
+                    <p class="verse-line-2">தூச வாபரண மார மாலைதரு</p>
+                    <p class="verse-line-2">சோபை மாதருட றூய்தில் பாதவரை</p>
+                    <p class="verse-line-2">கேச வாதியென வேச வாய்மையருள்</p>
+                    <p class="verse-line-2">கேச வாயநம கேச வாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">2.</span>ஆராய வேதமுடி வானாத பாதநம</p>
+                    <p class="verse-line-2">வாசாபி சாசமற வேயாளு பாதநம</p>
+                    <p class="verse-line-2">சீராய வானவர்க டேவாதி தேவநம</p>
+                    <p class="verse-line-2">தேனாரு பாதமலர் சீராக வோதுதொறு</p>
+                    <p class="verse-line-2">நீராய வாணவரை நேர்காணு பாதநம</p>
+                    <p class="verse-line-2">நீதான தாகுமென நேரோது மாசில் பொரு</p>
+                    <p class="verse-line-2">ணாராய ணாயபத மாநாட வோதிநம</p>
+                    <p class="verse-line-2">நாராய ணாயநம நாராய ணாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">3.</span>வாத வாதரறி யாத பாதநம</p>
+                    <p class="verse-line-2">மாகர் நாடரிய வேக பாதநம</p>
+                    <p class="verse-line-2">வோது வாரறிய வேத நாலுமன</p>
+                    <p class="verse-line-2">மோர்வு றாததென வோது பாதநம</p>
+                    <p class="verse-line-2">சீத வாதவழல் சேரு மாதவர்கள்</p>
+                    <p class="verse-line-2">சேரு மாறுனடி தேரு மாறருளி</p>
+                    <p class="verse-line-2">மாத வாவிலழி வேனை யாளுநம</p>
+                    <p class="verse-line-2">மாத வாயநம மாத வாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">4.</span>தாரம் போதுபொரு டானென் றோதிநம</p>
+                    <p class="verse-line-2">தாரம் பாலர்பலர் சார்பென் றோதிநம</p>
+                    <p class="verse-line-2">வீரம் போதுதலை மீதந் தாளுநம</p>
+                    <p class="verse-line-2">வேகம் போதிலெரி மாகங் காலவனி</p>
+                    <p class="verse-line-2">நாரம் போதகனு மாவிங் கோதிநம</p>
+                    <p class="verse-line-2">ஞானம் போயழிய நாசஞ் சேரியநம</p>
+                    <p class="verse-line-2">கோரம் போகவெனை யாளுங் கோல நம</p>
+                    <p class="verse-line-2">கோவிந் தாயநம கோவிந் தாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">5.</span>கட்ட மாம்வினை கைத்த தாணம</p>
+                    <p class="verse-line-2">கத்தும் வாதியர் கைப்ப டாய்நம</p>
+                    <p class="verse-line-2">விட்ட மானவர் பத்தி யாய்நம</p>
+                    <p class="verse-line-2">வெற்றி யாளவல் வித்த காநம</p>
+                    <p class="verse-line-2">வெட்டு மாவுரு வத்த னேநம</p>
+                    <p class="verse-line-2">வெட்டொ ணாவரு வத்த னேநம</p>
+                    <p class="verse-line-2">வெட்ட மாவர கிட்டு வாய்நம</p>
+                    <p class="verse-line-2">விட்டு வேநம விட்டு வேநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">6.</span>பிறைசூடு வோனுமரி பிரமாவு மாதிநம</p>
+                    <p class="verse-line-2">பெருவான மாதிநில வரைநாச காரிநம</p>
+                    <p class="verse-line-2">துறைகூறு வாதருள மிருளான பாதநம</p>
+                    <p class="verse-line-2">சுரூபாவெ னாவுருகு மவர்காணு சோதிநம</p>
+                    <p class="verse-line-2">வறைகூவி நாயனைய வெனையாளு பாதநம</p>
+                    <p class="verse-line-2">வமரேச ராலுமறி வரிதாய பாதநம</p>
+                    <p class="verse-line-2">மறைசூடி காபரண வணியான பாதநம</p>
+                    <p class="verse-line-2">மதுசூத னாயநம மதுசூத னாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">7.</span>புரையற்றி யாவையினு நிலையுற்ற பாதநம</p>
+                    <p class="verse-line-2">புகழுற்ற தோறுமுடல் புளகித்து ணேயமொரு</p>
+                    <p class="verse-line-2">கரையற்ற மாதவர்க டமைகைத்த லாமலக</p>
+                    <p class="verse-line-2">கனியொக்க நாடிமிகு களியுற்ற பாதநம</p>
+                    <p class="verse-line-2">வுரையற்ற தாயுமறை யுணர்விற் படாததென</p>
+                    <p class="verse-line-2">வொழிவற்ற சோதிவர வழியிட்ட வீரநம</p>
+                    <p class="verse-line-2">திரையற்ற வார்கலிய தெனவைத்த பாதநம</p>
+                    <p class="verse-line-2">திரிவிக்ர மாயநம திரிவிக்ர மாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">8.</span>சோம னாதிசுடர் பூமு னாயபொரு</p>
+                    <p class="verse-line-2">டோமி லாதவுயிர் தோறு மேவிநம</p>
+                    <p class="verse-line-2">நாம நாடுருவம் யாவு மாகியொரு</p>
+                    <p class="verse-line-2">நாம ரூபமறு நாத பாதநம</p>
+                    <p class="verse-line-2">தாய்மு னாகிவரு சார்பி யாவுநின</p>
+                    <p class="verse-line-2">தாள லாதறிவி லாத தாபதர்கள்</p>
+                    <p class="verse-line-2">வாய்ம னாலயம்வி டாத சோதிநம</p>
+                    <p class="verse-line-2">வரம னாயநம வாம னாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">9.</span>வேத ராகியுடன் வீடு சேரும்வகை</p>
+                    <p class="verse-line-2">மேவு மாதரவி னார்க ளாயகில</p>
+                    <p class="verse-line-2">பூத ராலும்வழி பாடு மேவுமிரு</p>
+                    <p class="verse-line-2">போதெ னாவுமுரை யாடு மாயநம</p>
+                    <p class="verse-line-2">மாத ராதலம வான நாடர்தொழு</p>
+                    <p class="verse-line-2">மாக ராசர்பத மாய்வி லாமையிலை</p>
+                    <p class="verse-line-2">சீத ராதரவில் வீத ராகரறி</p>
+                    <p class="verse-line-2">சீத ராயநம  சீத ராயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+
+                <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">10.</span>கழல்சூடு வாரிதய கமலால யாயநம</p>
+                    <p class="verse-line-2">கலிகாலன் வாயின்மணை யிடுகால காலநம</p>
+                    <p class="verse-line-2">வழல்சேர்மு னேயழியு மெழுகாக வேயுருகு</p>
+                    <p class="verse-line-2">மடியார்க டாமறிய வுளதான பாதநம</p>
+                    <p class="verse-line-2">குழல்சேரு மாறின்மொழி மடவார்கள் காதன்மிகு</p>
+                    <p class="verse-line-2">கொடியேனை யாளவொரு குருவான கோலநம</p>
+                    <p class="verse-line-2">வெழில்சேரு மாமுனிவர் தொழுமாதி நாதநம</p>
+                    <p class="verse-line-2">விருஷிகேச வாயநம விருஷிகேச வாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+                 <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">11.</span>சித்தரா னார்களறி சிற்பிரகா சாயநம</p>
+                    <p class="verse-line-2">செற்றமார் வாதின்மயல் செற்றதா டாளநம</p>
+                    <p class="verse-line-2">மத்தரா யோதுபத கத்தில்வா தேயொழிய</p>
+                    <p class="verse-line-2">மற்றிலா தாரமருள் வைத்தமா மாயநம</p>
+                    <p class="verse-line-2">நித்தமா வேவல்செய்து நிற்கநே ராதுனடி</p>
+                    <p class="verse-line-2">நித்தமா மேவல்செய்து நிற்கமா லாகுமதி</p>
+                    <p class="verse-line-2">பத்தரா னார்கள்பெறு பத்மபா தாயநம</p>
+                    <p class="verse-line-2">பத்மநா பாயநம பத்மநா பாயநம</p>
+                </div>
+                <hr class="verse-divider">
+
+                 <div class="verse-block">
+                    <p class="verse-line"><span class="verse-num">12.</span>ஆமூதை தீயவனி யாகாச மாகிநம</p>
+                    <p class="verse-line-2">வானாலு நீமுழுது மாகாத சோதிநம</p>
+                    <p class="verse-line-2">சீமூத வாகனன்மு னாம்வானு ளோர்பரவு</p>
+                    <p class="verse-line-2">தேவேச ராலுமறி வாகாத தேசநம</p>
+                    <p class="verse-line-2">மாமூது நான்மறைகள் வாசாம கோசரமென்</p>
+                    <p class="verse-line-2">வாடாத பாதமலர் வாயார வோது தொறுந்</p>
+                    <p class="verse-line-2">தாமூது காரமென லாநேசர் சார்புநம</p>
+                    <p class="verse-line-2">தாமோத ராயநம தாமோத ராயநம</p>
+                </div>
+             
+
+
+                <p class="trad-meter-sub">கட்டளைக்கலித்துறை</p>
+
+                <div class="verse-block">
+                    <p class="verse-line">கேசவனாரா யணன்கிளர்மாதவன் கேடொன்றிலாத்</p>
+                    <p class="verse-line-2">தேசமர் கோவிந்தன் விட்டுமதுத்திரி விக்கிரமன்</p>
+                    <p class="verse-line-2">வாசமுன்வாமனன் சீதரன்மன்னு மிருடிபத்ம</p>
+                    <p class="verse-line-2">னாசமிறாமோ தரனுருவாய் நின்ற நாமங்களே</p>
+                </div>
+
+            </div>
+
+            <div class="back-btn-wrap">
+                <a href="index.html#songs" class="btn btn-lg">← பாடல்கள் பட்டியலுக்குத் திரும்புக</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="mb-1">&copy; 2026 தத்துவ ஞான மார்க்கம் | Mahan Thathuvarayar | சுரூபானந்த சோதி</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
